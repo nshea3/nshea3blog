@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="dcterms.date" content="2020-12-02">
 
-<title>nshea3blog - The Mathematics of Drilling Intercepts</title>
+<title>The Mathematics of Drilling Intercepts – nshea3blog</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,6 +22,7 @@ ul.task-list li input[type="checkbox"] {
   vertical-align: middle;
 }
 /* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
@@ -58,29 +59,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7b89279ff1a6dce999919e0e67d4d9ec.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5b4ad623e5705c0698d39aec6f10cf02.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -89,56 +98,95 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-HNK1VVBKXW"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-HNK1VVBKXW', { 'anonymize_ip': true});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../styles.css">
 </head>
 
-<body class="nav-fixed">
+<body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">nshea3blog</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/nshea3" rel="" target=""><i class="bi bi-github" role="img">
+    <a class="nav-link" href="https://github.com/nshea3"> <i class="bi bi-github" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item compact">
-    <a class="nav-link" href="https://www.linkedin.com/in/nicholas-shea-94b338138/" rel="" target=""><i class="bi bi-linkedin" role="img">
+    <a class="nav-link" href="https://www.linkedin.com/in/nicholas-shea-94b338138/"> <i class="bi bi-linkedin" role="img">
 </i> 
- <span class="menu-text"></span></a>
+<span class="menu-text"></span></a>
   </li>  
 </ul>
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
-          </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -183,6 +231,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="introduction" class="level2">
 <h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
 <p>Drilling intercepts are a prominent feature of junior mining news releases. They are closely monitored by the mining investment community, and a particularly good intercept can raise the prospects for a project.</p>
@@ -214,20 +263,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <!-- TradingView Widget END -->
 <p>Here we open up the spreadsheet of drilling results (available on their website), and then filter on <code>Drill Hole</code> to consider a single hole:</p>
-<div class="cell" data-outputid="849f0b40-945a-4c46-b7c4-d63302c78bc6" data-execution_count="53">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<div id="cell-4" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="849f0b40-945a-4c46-b7c4-d63302c78bc6" data-execution_count="53">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>intercepts <span class="op">=</span> pd.read_excel(<span class="st">'drive/My Drive/Projects/posts/data/Great_Bear/lp_drill_hole_composites_all.xlsx'</span>)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>intercepts[<span class="st">'Record'</span>] <span class="op">=</span> intercepts.index</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>dh <span class="op">=</span> intercepts[intercepts[<span class="st">'Drill Hole'</span>] <span class="op">==</span> <span class="st">'BR-022'</span>]</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>dh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>dh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="53">
 <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -242,7 +291,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">95</td>
+<th data-quarto-table-cell-role="th">95</th>
 <td>BR-022</td>
 <td>including</td>
 <td>110.0</td>
@@ -252,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>95</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">96</td>
+<th data-quarto-table-cell-role="th">96</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>111.4</td>
@@ -262,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>96</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">97</td>
+<th data-quarto-table-cell-role="th">97</th>
 <td>BR-022</td>
 <td>and</td>
 <td>274.0</td>
@@ -272,7 +321,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>97</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">98</td>
+<th data-quarto-table-cell-role="th">98</th>
 <td>BR-022</td>
 <td>and</td>
 <td>432.9</td>
@@ -282,7 +331,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>98</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">99</td>
+<th data-quarto-table-cell-role="th">99</th>
 <td>BR-022</td>
 <td>including</td>
 <td>432.9</td>
@@ -292,7 +341,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>99</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">100</td>
+<th data-quarto-table-cell-role="th">100</th>
 <td>BR-022</td>
 <td>and</td>
 <td>445.0</td>
@@ -302,7 +351,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>100</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">101</td>
+<th data-quarto-table-cell-role="th">101</th>
 <td>BR-022</td>
 <td>and</td>
 <td>461.6</td>
@@ -312,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>101</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">102</td>
+<th data-quarto-table-cell-role="th">102</th>
 <td>BR-022</td>
 <td>including</td>
 <td>471.0</td>
@@ -322,7 +371,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>102</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">103</td>
+<th data-quarto-table-cell-role="th">103</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>471.0</td>
@@ -332,7 +381,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>103</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">104</td>
+<th data-quarto-table-cell-role="th">104</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>490.0</td>
@@ -342,7 +391,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>104</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">105</td>
+<th data-quarto-table-cell-role="th">105</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>505.2</td>
@@ -352,7 +401,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>105</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">106</td>
+<th data-quarto-table-cell-role="th">106</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>506.2</td>
@@ -362,7 +411,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>106</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">107</td>
+<th data-quarto-table-cell-role="th">107</th>
 <td>BR-022</td>
 <td>and</td>
 <td>600.0</td>
@@ -382,7 +431,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Of course it is first necessary to determine the true assay values for each separate interval from top to bottom. Unfortunately, each row is not independent - some of the intercepts are contained in others, and the subinterval gold is INCLUDED in the parent interval calculation! So we can’t just use the <code>Gold (g/t)</code> field directly, since intercepts are reported with these “highlights”, or higher grade sections within the longer interval.</p>
 <p>Sometimes this convention is used unethically to suggest larger intervals of enrichment than truly exist. This is called “grade smearing” and the method of residual grade calculation applied here will detect any such attempt to disguise poor results.</p>
 <p>At first it may seem like the correct interpretation of these intervals is to imagine them intervals stacked on top of one another, but this is very misleading. We can easily visualize this to see the error:</p>
-<div class="cell" data-outputid="3a2c3ba3-475c-49fb-9d2c-2b097d176455" data-execution_count="55">
+<div id="cell-8" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:163}}" data-outputid="3a2c3ba3-475c-49fb-9d2c-2b097d176455" data-execution_count="55">
 <div class="cell-output cell-output-display" data-execution_count="55">
 
 <div id="altair-viz-361a1f1d786945a4a4400c3f6db4e5c2"></div>
@@ -440,7 +489,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>We only have the total grade, INCLUDING the high-grade, child subintervals. Considering it in that way ignores the fact that the high-grade intervals are included in the wider, lower-grade intervals, inflating the grade measured over that length. This has enormous implications for the <em>continuity</em> of the mineralization, which determines the feasibility of the project.</li>
 </ul>
 <p>In order to eliminate this effect we’ll need to do some math with the intercepts. This visualization attempts to show this hierarchical, branching structure:</p>
-<div class="cell" data-outputid="38571306-f6c7-42a1-dca3-fb381e719c59" data-execution_count="56">
+<div id="cell-10" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:463}}" data-outputid="38571306-f6c7-42a1-dca3-fb381e719c59" data-execution_count="56">
 <div class="cell-output cell-output-display" data-execution_count="56">
 
 <div id="altair-viz-a6414c22b76d4196b3709511ad6319be"></div>
@@ -497,10 +546,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Plotted side by side, the intercepts show the parent-child overlapping relationship and capture the complexity of the problem.</p>
 <p>Parent intervals can have no child intervals, a single child interval, or several child intervals. Child intervals themselves can have no child intervals, a single child interval, or several child intervals. Clearly there is a whole class of related problems we could solve with a general solution to this problem.</p>
 <p>So far we have treated the <code>From</code> and <code>To</code> fields in isolation, and we can use a cool feature of Pandas to convert them to intervals:</p>
-<div class="cell" data-outputid="b57b177f-a93d-4ad3-d1d7-a3876220ee9c" data-execution_count="60">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dh[<span class="st">'Interval'</span>] <span class="op">=</span> dh.<span class="bu">apply</span>(<span class="kw">lambda</span> x: pd.Interval(x[<span class="st">'From (m)'</span>], x[<span class="st">'To (m)'</span>]), axis<span class="op">=</span><span class="dv">1</span>)</span>
+<div id="cell-13" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b57b177f-a93d-4ad3-d1d7-a3876220ee9c" data-execution_count="60">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>dh[<span class="st">'Interval'</span>] <span class="op">=</span> dh.<span class="bu">apply</span>(<span class="kw">lambda</span> x: pd.Interval(x[<span class="st">'From (m)'</span>], x[<span class="st">'To (m)'</span>]), axis<span class="op">=</span><span class="dv">1</span>)</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>dh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
@@ -511,8 +560,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <p>So the motivation here was to create <code>Interval</code> objects to use them with the <code>pd.Overlaps</code> function and then model the overlap relationship among the different intervals:</p>
-<div class="cell" data-execution_count="131">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<div id="cell-15" class="cell" data-execution_count="131">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>cross_interval <span class="op">=</span> itertools.product(dh.Interval,dh.Interval)</span>
@@ -523,25 +572,33 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>intersect_matrix <span class="op">=</span> np.array([interval[<span class="dv">0</span>].intersect(interval[<span class="dv">1</span>]) <span class="cf">for</span> interval <span class="kw">in</span> cross_interval])</span>
 <span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ns <span class="op">=</span> <span class="bu">int</span>(np.sqrt(overlap_matrix.shape[<span class="dv">0</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>ns <span class="op">=</span> <span class="bu">int</span>(np.sqrt(overlap_matrix.shape[<span class="dv">0</span>]))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell" data-outputid="4fa87ebc-f660-4a76-fb18-8d67ce648622" data-execution_count="136">
+<div id="cell-16" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:611}}" data-outputid="4fa87ebc-f660-4a76-fb18-8d67ce648622" data-execution_count="136">
 <div class="cell-output cell-output-display">
-<p><img src="2020-12-02-Mathematics-of-Drilling-Intercepts_files/figure-html/cell-8-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2020-12-02-Mathematics-of-Drilling-Intercepts_files/figure-html/cell-8-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Here we see the overlaps: if a pixel is white, it means that the interval on the x-axis and the interval on the y-axis overlap.</p>
 <p>Overlap is symmetric: so each ‘child’ overlaps with its parent and vice versa. It should become clear that we are actually interested in the “contains” relationship, which is not symmetric and will help us identify parent intervals and child intervals and start reducing the intervals.</p>
 <p>Fortunately this is also supported in Python:</p>
-<div class="cell" data-outputid="ea406ea5-d30b-428d-ca67-62c8525f7144" data-execution_count="138">
+<div id="cell-19" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:611}}" data-outputid="ea406ea5-d30b-428d-ca67-62c8525f7144" data-execution_count="138">
 <div class="cell-output cell-output-display">
-<p><img src="2020-12-02-Mathematics-of-Drilling-Intercepts_files/figure-html/cell-10-output-1.png" class="img-fluid"></p>
+<div>
+<figure class="figure">
+<p><img src="2020-12-02-Mathematics-of-Drilling-Intercepts_files/figure-html/cell-10-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
 </div>
 </div>
 <p>Now we can pull out a tree</p>
 <p>Of the machine-intelligible formats, a <strong>tree data structure</strong> is clearly the most suited to representing the intervals.</p>
-<div class="cell" data-outputid="ac8a54d9-c0bc-431c-f437-02ad111b4299" data-execution_count="75">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(contain_matrix_sq.T):</span>
+<div id="cell-23" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="ac8a54d9-c0bc-431c-f437-02ad111b4299" data-execution_count="75">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i, col <span class="kw">in</span> <span class="bu">enumerate</span>(contain_matrix_sq.T):</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">~</span>np.<span class="bu">any</span>(col):</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -551,7 +608,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    all_str_to_node[<span class="bu">str</span>(dh[<span class="st">'Record'</span>].values[i])].parent <span class="op">=</span> all_str_to_node[<span class="bu">str</span>(dh[<span class="st">'Record'</span>].values[::<span class="op">-</span><span class="dv">1</span>][np.argmax(col[::<span class="op">-</span><span class="dv">1</span>])])]</span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(RenderTree(root, style<span class="op">=</span>AsciiStyle()).by_attr())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(RenderTree(root, style<span class="op">=</span>AsciiStyle()).by_attr())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>DH
 |-- 95
@@ -571,7 +628,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 <p>Now we are really getting somewhere- we can actually start looking at the global picture (since we now know which intervals are not “child” intervals)</p>
 <p>These are the direct children. We can go ahead and plot them and have a totally accurate picture of the log:</p>
-<div class="cell" data-outputid="9da1ab6e-9921-4246-9f4d-a4e1bb371e28" data-execution_count="73">
+<div id="cell-26" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:163}}" data-outputid="9da1ab6e-9921-4246-9f4d-a4e1bb371e28" data-execution_count="73">
 <div class="cell-output cell-output-display" data-execution_count="73">
 
 <div id="altair-viz-7d6568aa89f14912ba55c20d78a5e12f"></div>
@@ -625,8 +682,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </script>
 </div>
 </div>
-<div class="cell" data-outputid="7e29200e-51b4-4b09-c5bd-babf8203f67c" data-execution_count="115">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dh_prime.dtypes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-27" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="7e29200e-51b4-4b09-c5bd-babf8203f67c" data-execution_count="115">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>dh_prime.dtypes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="115">
 <pre><code>Drill Hole                 object
 Unnamed: 1                 object
@@ -642,8 +699,8 @@ dtype: object</code></pre>
 </div>
 <p>While that is correct, it is not complete: we have left out all of the additional information provided by the smaller sub-intervals!</p>
 <p>In order to incorporate that we will have to remove them from the parent intervals and determine the residual grade (whatever is left once we pull out the gold contained in the subinterval)</p>
-<div class="cell" data-outputid="bf487264-f191-4425-aad5-998472af9322" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>((<span class="dv">119</span>) <span class="op">*</span> (<span class="fl">3.78</span>) <span class="op">-</span> (<span class="dv">3</span>) <span class="op">*</span> (<span class="fl">131.5</span>)) <span class="op">/</span> (<span class="dv">119</span> <span class="op">-</span> <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-29" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="bf487264-f191-4425-aad5-998472af9322" data-execution_count="35">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>((<span class="dv">119</span>) <span class="op">*</span> (<span class="fl">3.78</span>) <span class="op">-</span> (<span class="dv">3</span>) <span class="op">*</span> (<span class="fl">131.5</span>)) <span class="op">/</span> (<span class="dv">119</span> <span class="op">-</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <pre><code>0.47689655172413786</code></pre>
 </div>
@@ -658,10 +715,10 @@ dtype: object</code></pre>
 <p>Credit to https://twitter.com/BrentCo77759016/status/1326183861722599424 and</p>
 <p>So now we have to do this, but with every single subinterval until we get the residual grade at every point along the drillhole</p>
 <p>Fortunately, the tree data structure we selected has specialized methods that make a traversal very simple.</p>
-<div class="cell" data-outputid="e6451ad2-fcd2-4600-90ae-7d76ddf71534" data-execution_count="76">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>levelord_nodes <span class="op">=</span> [(node.name, node.children) <span class="cf">for</span> node <span class="kw">in</span> LevelOrderIter(root)]</span>
+<div id="cell-31" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="e6451ad2-fcd2-4600-90ae-7d76ddf71534" data-execution_count="76">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>levelord_nodes <span class="op">=</span> [(node.name, node.children) <span class="cf">for</span> node <span class="kw">in</span> LevelOrderIter(root)]</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>levelord_nodes</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>levelord_nodes</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="76">
 <pre><code>[('DH',
   (Node('/DH/95'),
@@ -686,11 +743,11 @@ dtype: object</code></pre>
  ('106', ())]</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="77">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>nn_np_loi <span class="op">=</span> [(node.name, node.parent) <span class="cf">for</span> node <span class="kw">in</span> LevelOrderIter(root)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-32" class="cell" data-execution_count="77">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>nn_np_loi <span class="op">=</span> [(node.name, node.parent) <span class="cf">for</span> node <span class="kw">in</span> LevelOrderIter(root)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell" data-outputid="bec714ce-06d5-4515-f36c-74e40dd44044" data-execution_count="78">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>all_str_to_node</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-33" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="bec714ce-06d5-4515-f36c-74e40dd44044" data-execution_count="78">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>all_str_to_node</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="78">
 <pre><code>{'100': Node('/DH/100'),
  '101': Node('/DH/101'),
@@ -707,11 +764,11 @@ dtype: object</code></pre>
  '99': Node('/DH/98/99')}</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="a6f0ac35-2b82-4b7c-d370-1ebb56b25f2c" data-execution_count="79">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node, parent <span class="kw">in</span> nn_np_loi[::<span class="op">-</span><span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]:</span>
+<div id="cell-34" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="a6f0ac35-2b82-4b7c-d370-1ebb56b25f2c" data-execution_count="79">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> node, parent <span class="kw">in</span> nn_np_loi[::<span class="op">-</span><span class="dv">1</span>][:<span class="op">-</span><span class="dv">1</span>]:</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(node)</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> child <span class="kw">in</span> all_str_to_node[node].children:</span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(child)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(child)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>106
 105
@@ -735,13 +792,13 @@ Node('/DH/98/99')
 Node('/DH/95/96')</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="ef119af5-8c0b-43b5-bc5e-125cd122f4bc" data-execution_count="80">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-35" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="ef119af5-8c0b-43b5-bc5e-125cd122f4bc" data-execution_count="80">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>dh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="80">
 <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -758,7 +815,7 @@ Node('/DH/95/96')</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">95</td>
+<th data-quarto-table-cell-role="th">95</th>
 <td>BR-022</td>
 <td>including</td>
 <td>110.0</td>
@@ -770,7 +827,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(110.000000000000, 116.100000000000)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">96</td>
+<th data-quarto-table-cell-role="th">96</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>111.4</td>
@@ -782,7 +839,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(111.400000000000, 113.100000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">97</td>
+<th data-quarto-table-cell-role="th">97</th>
 <td>BR-022</td>
 <td>and</td>
 <td>274.0</td>
@@ -794,7 +851,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(274.000000000000, 299.000000000000)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">98</td>
+<th data-quarto-table-cell-role="th">98</th>
 <td>BR-022</td>
 <td>and</td>
 <td>432.9</td>
@@ -806,7 +863,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(432.900000000000, 439.000000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">99</td>
+<th data-quarto-table-cell-role="th">99</th>
 <td>BR-022</td>
 <td>including</td>
 <td>432.9</td>
@@ -818,7 +875,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(432.900000000000, 435.700000000000)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">100</td>
+<th data-quarto-table-cell-role="th">100</th>
 <td>BR-022</td>
 <td>and</td>
 <td>445.0</td>
@@ -830,7 +887,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(445.000000000000, 452.000000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">101</td>
+<th data-quarto-table-cell-role="th">101</th>
 <td>BR-022</td>
 <td>and</td>
 <td>461.6</td>
@@ -842,7 +899,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(461.600000000000, 512.000000000000)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">102</td>
+<th data-quarto-table-cell-role="th">102</th>
 <td>BR-022</td>
 <td>including</td>
 <td>471.0</td>
@@ -854,7 +911,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(471.000000000000, 512.000000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">103</td>
+<th data-quarto-table-cell-role="th">103</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>471.0</td>
@@ -866,7 +923,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(471.000000000000, 478.000000000000)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">104</td>
+<th data-quarto-table-cell-role="th">104</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>490.0</td>
@@ -878,7 +935,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(490.000000000000, 491.000000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">105</td>
+<th data-quarto-table-cell-role="th">105</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>505.2</td>
@@ -890,7 +947,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(505.200000000000, 508.750000000000)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">106</td>
+<th data-quarto-table-cell-role="th">106</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>506.2</td>
@@ -902,7 +959,7 @@ Node('/DH/95/96')</code></pre>
 <td>Interval(506.200000000000, 506.700000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">107</td>
+<th data-quarto-table-cell-role="th">107</th>
 <td>BR-022</td>
 <td>and</td>
 <td>600.0</td>
@@ -919,12 +976,12 @@ Node('/DH/95/96')</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-outputid="f0c35134-f9c6-4272-997e-1a701626f7c5" data-execution_count="81">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cross_interval <span class="op">=</span> itertools.product(dh.Interval_obj,dh.Interval_obj)</span>
+<div id="cell-36" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="f0c35134-f9c6-4272-997e-1a701626f7c5" data-execution_count="81">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>cross_interval <span class="op">=</span> itertools.product(dh.Interval_obj,dh.Interval_obj)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>intersect_matrix <span class="op">=</span> np.array([interval[<span class="dv">0</span>].intersect(interval[<span class="dv">1</span>]) <span class="cf">for</span> interval <span class="kw">in</span> cross_interval])</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>intersect_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>intersect_matrix</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="81">
 <pre><code>array([Interval(110.000000000000, 116.100000000000),
        Interval(111.400000000000, 113.100000000000), EmptySet(),
@@ -991,8 +1048,8 @@ Node('/DH/95/96')</code></pre>
        Interval(600.000000000000, 620.000000000000)], dtype=object)</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="b34e37dd-fd81-495a-9448-1bbf7b6f670a" data-execution_count="82">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dh[<span class="st">'grade_len'</span>] <span class="op">=</span> dh[<span class="st">'Gold (g/t)'</span>] <span class="op">*</span> dh[<span class="st">'Width (m)'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-37" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b34e37dd-fd81-495a-9448-1bbf7b6f670a" data-execution_count="82">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>dh[<span class="st">'grade_len'</span>] <span class="op">=</span> dh[<span class="st">'Gold (g/t)'</span>] <span class="op">*</span> dh[<span class="st">'Width (m)'</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>/usr/local/lib/python3.6/dist-packages/ipykernel_launcher.py:1: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
@@ -1002,13 +1059,13 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   """Entry point for launching an IPython kernel.</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="e06b1c55-4223-417c-ffb8-2c422575ba50" data-execution_count="83">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dh</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-38" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:452}}" data-outputid="e06b1c55-4223-417c-ffb8-2c422575ba50" data-execution_count="83">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>dh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="83">
 <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1026,7 +1083,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">95</td>
+<th data-quarto-table-cell-role="th">95</th>
 <td>BR-022</td>
 <td>including</td>
 <td>110.0</td>
@@ -1039,7 +1096,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>15.982</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">96</td>
+<th data-quarto-table-cell-role="th">96</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>111.4</td>
@@ -1052,7 +1109,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>13.464</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">97</td>
+<th data-quarto-table-cell-role="th">97</th>
 <td>BR-022</td>
 <td>and</td>
 <td>274.0</td>
@@ -1065,7 +1122,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>4.750</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">98</td>
+<th data-quarto-table-cell-role="th">98</th>
 <td>BR-022</td>
 <td>and</td>
 <td>432.9</td>
@@ -1078,7 +1135,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>24.705</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">99</td>
+<th data-quarto-table-cell-role="th">99</th>
 <td>BR-022</td>
 <td>including</td>
 <td>432.9</td>
@@ -1091,7 +1148,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>22.904</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">100</td>
+<th data-quarto-table-cell-role="th">100</th>
 <td>BR-022</td>
 <td>and</td>
 <td>445.0</td>
@@ -1104,7 +1161,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>2.870</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">101</td>
+<th data-quarto-table-cell-role="th">101</th>
 <td>BR-022</td>
 <td>and</td>
 <td>461.6</td>
@@ -1117,7 +1174,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>89.712</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">102</td>
+<th data-quarto-table-cell-role="th">102</th>
 <td>BR-022</td>
 <td>including</td>
 <td>471.0</td>
@@ -1130,7 +1187,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>85.690</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">103</td>
+<th data-quarto-table-cell-role="th">103</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>471.0</td>
@@ -1143,7 +1200,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>16.590</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">104</td>
+<th data-quarto-table-cell-role="th">104</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>490.0</td>
@@ -1156,7 +1213,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>8.150</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">105</td>
+<th data-quarto-table-cell-role="th">105</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>505.2</td>
@@ -1169,7 +1226,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>52.895</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">106</td>
+<th data-quarto-table-cell-role="th">106</th>
 <td>BR-022</td>
 <td>and including</td>
 <td>506.2</td>
@@ -1182,7 +1239,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <td>50.240</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">107</td>
+<th data-quarto-table-cell-role="th">107</th>
 <td>BR-022</td>
 <td>and</td>
 <td>600.0</td>
@@ -1200,8 +1257,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
-<div class="cell" data-outputid="442faa3d-2ae5-49a2-fc82-99246791208f" data-execution_count="84">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Union</span>
+<div id="cell-39" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="442faa3d-2ae5-49a2-fc82-99246791208f" data-execution_count="84">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sympy <span class="im">import</span> Union</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> functools</span>
 <span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>resid_grades, resid_len <span class="op">=</span> {}, {} </span>
@@ -1232,7 +1289,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <span id="cb24-29"><a href="#cb24-29" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(lg_total_int <span class="op">-</span> <span class="bu">sum</span>(lg_child_int))</span>
 <span id="cb24-30"><a href="#cb24-30" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb24-31"><a href="#cb24-31" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(<span class="st">"Residual Grade:"</span>)</span>
-<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(residual_grade)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-32"><a href="#cb24-32" aria-hidden="true" tabindex="-1"></a>  <span class="bu">print</span>(residual_grade)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Interval:
 95
@@ -1323,14 +1380,14 @@ Residual Grade:
 <p>Rearranging terms, we get:</p>
 <p><span class="math inline">\(x = \frac{(6.10 m)(2.62 g/t) - (1.7 m)(7.92 g/t)}{ 4.4 m }\)</span></p>
 <p>So the residual grade is 0.5723 g/t, which matches the value found above!</p>
-<div class="cell" data-outputid="199de9de-33f4-4204-e76c-60037ac63598" data-execution_count="45">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>((<span class="fl">6.10</span> <span class="op">*</span> <span class="fl">2.62</span>) <span class="op">-</span> (<span class="fl">1.7</span>)<span class="op">*</span>(<span class="fl">7.92</span>)) <span class="op">/</span> (<span class="fl">4.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-41" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="199de9de-33f4-4204-e76c-60037ac63598" data-execution_count="45">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>((<span class="fl">6.10</span> <span class="op">*</span> <span class="fl">2.62</span>) <span class="op">-</span> (<span class="fl">1.7</span>)<span class="op">*</span>(<span class="fl">7.92</span>)) <span class="op">/</span> (<span class="fl">4.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="45">
 <pre><code>0.5722727272727269</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="60c94a66-784e-4f5f-f44d-809700a59046" data-execution_count="46">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>resid_len</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-42" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="60c94a66-784e-4f5f-f44d-809700a59046" data-execution_count="46">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>resid_len</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="46">
 <pre><code>{'100': Interval(445.000000000000, 452.000000000000),
  '101': Interval.Ropen(461.600000000000, 471.000000000000),
@@ -1347,15 +1404,15 @@ Residual Grade:
  '99': Interval(432.900000000000, 435.700000000000)}</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="781c3d35-6def-4ba2-85be-4c60503c622b" data-execution_count="105">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Interval(<span class="fl">445.000000000000</span>, <span class="fl">452.000000000000</span>).end</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-43" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="781c3d35-6def-4ba2-85be-4c60503c622b" data-execution_count="105">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Interval(<span class="fl">445.000000000000</span>, <span class="fl">452.000000000000</span>).end</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="105">
 <pre><code>452.000000000000</code></pre>
 </div>
 </div>
-<div class="cell" data-outputid="0beba410-5bb4-4203-9551-00bf65013277" data-execution_count="47">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>dh[<span class="st">'Record'</span>].astype(<span class="bu">str</span>).<span class="bu">map</span>(resid_len)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>dh[<span class="st">'Record'</span>].astype(<span class="bu">str</span>).<span class="bu">map</span>(resid_grades)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-44" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="0beba410-5bb4-4203-9551-00bf65013277" data-execution_count="47">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>dh[<span class="st">'Record'</span>].astype(<span class="bu">str</span>).<span class="bu">map</span>(resid_len)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>dh[<span class="st">'Record'</span>].astype(<span class="bu">str</span>).<span class="bu">map</span>(resid_grades)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="47">
 <pre><code>95     0.572272727272726
 96      7.92000000000005
@@ -1375,8 +1432,8 @@ Name: Record, dtype: object</code></pre>
 </div>
 <p>TODO: Need to split up the non-contiguous segments so that you can actually plot them</p>
 <p>Idea: use .args attribute Problem: This is defined for Interval objects as well and it gets us something we don’t want</p>
-<div class="cell" data-outputid="b925905f-bc9e-4382-e766-774fbe2ed3f5" data-execution_count="48">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dh[<span class="st">'Record'</span>].astype(<span class="bu">str</span>).<span class="bu">map</span>(resid_len)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-46" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;}}" data-outputid="b925905f-bc9e-4382-e766-774fbe2ed3f5" data-execution_count="48">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>dh[<span class="st">'Record'</span>].astype(<span class="bu">str</span>).<span class="bu">map</span>(resid_len)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="48">
 <pre><code>95     Union(Interval.Ropen(110.000000000000, 111.400...
 96          Interval(111.400000000000, 113.100000000000)
@@ -1394,8 +1451,8 @@ Name: Record, dtype: object</code></pre>
 Name: Record, dtype: object</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="91">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a></span>
+<div id="cell-47" class="cell" data-execution_count="91">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> args_extended(interval):</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="bu">type</span>(interval) <span class="op">==</span> Union:</span>
@@ -1407,15 +1464,15 @@ Name: Record, dtype: object</code></pre>
 <span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>remaining_interval_grade[<span class="st">'split_intervals'</span>] <span class="op">=</span> remaining_interval_grade.interval.<span class="bu">apply</span>(args_extended)</span>
 <span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>rig_exploded <span class="op">=</span> remaining_interval_grade.explode(<span class="st">'split_intervals'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>rig_exploded <span class="op">=</span> remaining_interval_grade.explode(<span class="st">'split_intervals'</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell" data-outputid="2c40580a-648e-4ce0-f338-679a81019c46" data-execution_count="102">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>rig_exploded</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-48" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:576}}" data-outputid="2c40580a-648e-4ce0-f338-679a81019c46" data-execution_count="102">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>rig_exploded</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="102">
 <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1426,103 +1483,103 @@ Name: Record, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">95</td>
+<th data-quarto-table-cell-role="th">95</th>
 <td>Union(Interval.Ropen(110.000000000000, 111.400...</td>
 <td>0.572272727272726</td>
 <td>Interval.Ropen(110.000000000000, 111.400000000...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">95</td>
+<th data-quarto-table-cell-role="th">95</th>
 <td>Union(Interval.Ropen(110.000000000000, 111.400...</td>
 <td>0.572272727272726</td>
 <td>Interval.Lopen(113.100000000000, 116.100000000...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">96</td>
+<th data-quarto-table-cell-role="th">96</th>
 <td>Interval(111.400000000000, 113.100000000000)</td>
 <td>7.92000000000005</td>
 <td>Interval(111.400000000000, 113.100000000000)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">97</td>
+<th data-quarto-table-cell-role="th">97</th>
 <td>Interval(274.000000000000, 299.000000000000)</td>
 <td>0.190000000000000</td>
 <td>Interval(274.000000000000, 299.000000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">98</td>
+<th data-quarto-table-cell-role="th">98</th>
 <td>Interval.Lopen(435.700000000000, 439.000000000...</td>
 <td>0.545757575757574</td>
 <td>Interval.Lopen(435.700000000000, 439.000000000...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">99</td>
+<th data-quarto-table-cell-role="th">99</th>
 <td>Interval(432.900000000000, 435.700000000000)</td>
 <td>8.17999999999997</td>
 <td>Interval(432.900000000000, 435.700000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">100</td>
+<th data-quarto-table-cell-role="th">100</th>
 <td>Interval(445.000000000000, 452.000000000000)</td>
 <td>0.410000000000000</td>
 <td>Interval(445.000000000000, 452.000000000000)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">101</td>
+<th data-quarto-table-cell-role="th">101</th>
 <td>Interval.Ropen(461.600000000000, 471.000000000...</td>
 <td>0.427872340425534</td>
 <td>Interval.Ropen(461.600000000000, 471.000000000...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">102</td>
+<th data-quarto-table-cell-role="th">102</th>
 <td>Union(Interval.open(478.000000000000, 490.0000...</td>
 <td>0.273514431239389</td>
 <td>Interval.open(478.000000000000, 490.000000000000)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">102</td>
+<th data-quarto-table-cell-role="th">102</th>
 <td>Union(Interval.open(478.000000000000, 490.0000...</td>
 <td>0.273514431239389</td>
 <td>Interval.open(491.000000000000, 505.200000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">102</td>
+<th data-quarto-table-cell-role="th">102</th>
 <td>Union(Interval.open(478.000000000000, 490.0000...</td>
 <td>0.273514431239389</td>
 <td>Interval.Lopen(508.750000000000, 512.000000000...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">103</td>
+<th data-quarto-table-cell-role="th">103</th>
 <td>Interval(471.000000000000, 478.000000000000)</td>
 <td>2.37000000000000</td>
 <td>Interval(471.000000000000, 478.000000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">104</td>
+<th data-quarto-table-cell-role="th">104</th>
 <td>Interval(490.000000000000, 491.000000000000)</td>
 <td>8.15000000000000</td>
 <td>Interval(490.000000000000, 491.000000000000)</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">105</td>
+<th data-quarto-table-cell-role="th">105</th>
 <td>Union(Interval.Ropen(505.200000000000, 506.200...</td>
 <td>0.870491803278683</td>
 <td>Interval.Ropen(505.200000000000, 506.200000000...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">105</td>
+<th data-quarto-table-cell-role="th">105</th>
 <td>Union(Interval.Ropen(505.200000000000, 506.200...</td>
 <td>0.870491803278683</td>
 <td>Interval.Lopen(506.700000000000, 508.750000000...</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">106</td>
+<th data-quarto-table-cell-role="th">106</th>
 <td>Interval(506.200000000000, 506.700000000000)</td>
 <td>100.480000000000</td>
 <td>Interval(506.200000000000, 506.700000000000)</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">107</td>
+<th data-quarto-table-cell-role="th">107</th>
 <td>Interval(600.000000000000, 620.000000000000)</td>
 <td>0.520000000000000</td>
 <td>Interval(600.000000000000, 620.000000000000)</td>
@@ -1533,22 +1590,22 @@ Name: Record, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-execution_count="122">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>rig_exploded[<span class="st">'From'</span>] <span class="op">=</span> rig_exploded.split_intervals.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.start).astype(<span class="bu">float</span>)</span>
+<div id="cell-49" class="cell" data-execution_count="122">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>rig_exploded[<span class="st">'From'</span>] <span class="op">=</span> rig_exploded.split_intervals.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.start).astype(<span class="bu">float</span>)</span>
 <span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>rig_exploded[<span class="st">'To'</span>] <span class="op">=</span> rig_exploded.split_intervals.<span class="bu">apply</span>(<span class="kw">lambda</span> x: x.end).astype(<span class="bu">float</span>)</span>
 <span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>rig_exploded[<span class="st">'Width'</span>] <span class="op">=</span> (rig_exploded.To <span class="op">-</span> rig_exploded.From).astype(<span class="bu">float</span>)</span>
 <span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>rig_exploded[<span class="st">'grade'</span>] <span class="op">=</span> rig_exploded.grade.astype(<span class="bu">float</span>)</span>
 <span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>rig_exploded[<span class="st">'drillhole'</span>] <span class="op">=</span> <span class="st">'BR-022'</span>    </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>rig_exploded[<span class="st">'drillhole'</span>] <span class="op">=</span> <span class="st">'BR-022'</span>    </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="cell" data-outputid="dc8f4bfb-3a1a-4679-c3cc-1b63c42dfdd2" data-execution_count="123">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>rig_exploded[[<span class="st">'From'</span>, <span class="st">'To'</span>, <span class="st">'grade'</span>, <span class="st">'Width'</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-50" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:576}}" data-outputid="dc8f4bfb-3a1a-4679-c3cc-1b63c42dfdd2" data-execution_count="123">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>rig_exploded[[<span class="st">'From'</span>, <span class="st">'To'</span>, <span class="st">'grade'</span>, <span class="st">'Width'</span>]]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="123">
 <div>
 
 
-<table class="dataframe table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="dataframe caption-top table table-sm table-striped small" data-border="1">
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
@@ -1560,119 +1617,119 @@ Name: Record, dtype: object</code></pre>
 </thead>
 <tbody>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">95</td>
+<th data-quarto-table-cell-role="th">95</th>
 <td>110.00</td>
 <td>111.40</td>
 <td>0.572273</td>
 <td>1.40</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">95</td>
+<th data-quarto-table-cell-role="th">95</th>
 <td>113.10</td>
 <td>116.10</td>
 <td>0.572273</td>
 <td>3.00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">96</td>
+<th data-quarto-table-cell-role="th">96</th>
 <td>111.40</td>
 <td>113.10</td>
 <td>7.920000</td>
 <td>1.70</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">97</td>
+<th data-quarto-table-cell-role="th">97</th>
 <td>274.00</td>
 <td>299.00</td>
 <td>0.190000</td>
 <td>25.00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">98</td>
+<th data-quarto-table-cell-role="th">98</th>
 <td>435.70</td>
 <td>439.00</td>
 <td>0.545758</td>
 <td>3.30</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">99</td>
+<th data-quarto-table-cell-role="th">99</th>
 <td>432.90</td>
 <td>435.70</td>
 <td>8.180000</td>
 <td>2.80</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">100</td>
+<th data-quarto-table-cell-role="th">100</th>
 <td>445.00</td>
 <td>452.00</td>
 <td>0.410000</td>
 <td>7.00</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">101</td>
+<th data-quarto-table-cell-role="th">101</th>
 <td>461.60</td>
 <td>471.00</td>
 <td>0.427872</td>
 <td>9.40</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">102</td>
+<th data-quarto-table-cell-role="th">102</th>
 <td>478.00</td>
 <td>490.00</td>
 <td>0.273514</td>
 <td>12.00</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">102</td>
+<th data-quarto-table-cell-role="th">102</th>
 <td>491.00</td>
 <td>505.20</td>
 <td>0.273514</td>
 <td>14.20</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">102</td>
+<th data-quarto-table-cell-role="th">102</th>
 <td>508.75</td>
 <td>512.00</td>
 <td>0.273514</td>
 <td>3.25</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">103</td>
+<th data-quarto-table-cell-role="th">103</th>
 <td>471.00</td>
 <td>478.00</td>
 <td>2.370000</td>
 <td>7.00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">104</td>
+<th data-quarto-table-cell-role="th">104</th>
 <td>490.00</td>
 <td>491.00</td>
 <td>8.150000</td>
 <td>1.00</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">105</td>
+<th data-quarto-table-cell-role="th">105</th>
 <td>505.20</td>
 <td>506.20</td>
 <td>0.870492</td>
 <td>1.00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">105</td>
+<th data-quarto-table-cell-role="th">105</th>
 <td>506.70</td>
 <td>508.75</td>
 <td>0.870492</td>
 <td>2.05</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">106</td>
+<th data-quarto-table-cell-role="th">106</th>
 <td>506.20</td>
 <td>506.70</td>
 <td>100.480000</td>
 <td>0.50</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">107</td>
+<th data-quarto-table-cell-role="th">107</th>
 <td>600.00</td>
 <td>620.00</td>
 <td>0.520000</td>
@@ -1684,8 +1741,8 @@ Name: Record, dtype: object</code></pre>
 </div>
 </div>
 </div>
-<div class="cell" data-outputid="11733dba-81f0-4cee-f29b-781f3a0ace0d" data-execution_count="130">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a></span>
+<div id="cell-51" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;colab&quot;,&quot;value&quot;:{&quot;base_uri&quot;:&quot;https://localhost:8080/&quot;,&quot;height&quot;:163}}" data-outputid="11733dba-81f0-4cee-f29b-781f3a0ace0d" data-execution_count="130">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>y_axis <span class="op">=</span> alt.Axis(</span>
 <span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Intercept ID'</span>,</span>
 <span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>    offset<span class="op">=</span><span class="dv">5</span>,</span>
@@ -1707,7 +1764,7 @@ Name: Record, dtype: object</code></pre>
 <span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>        alt.Tooltip(<span class="st">'Width:Q'</span>, title<span class="op">=</span><span class="st">'Width'</span>),</span>
 <span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>        alt.Tooltip(<span class="st">'grade:Q'</span>, title<span class="op">=</span><span class="st">'Gold Grade'</span>)</span>
 <span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>).properties(width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">100</span>).configure(background<span class="op">=</span><span class="st">'#D9E9F0'</span>).interactive()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>).properties(width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">100</span>).configure(background<span class="op">=</span><span class="st">'#D9E9F0'</span>).interactive()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="130">
 
 <div id="altair-viz-2b8991bba7d04b1a868cd453a4cd56aa"></div>
@@ -1767,43 +1824,58 @@ Name: Record, dtype: object</code></pre>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
@@ -1811,195 +1883,348 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       }
       return codeEl.innerText;
     }
-  });
-  clipboard.on('success', function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  });
-  function tippyHover(el, contentFn) {
-    const config = {
-      allowHTML: true,
-      content: contentFn,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start'
-    };
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      return note.innerHTML;
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
           }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
       });
     }
-  }
-});
-</script>
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
+
 
 
 
